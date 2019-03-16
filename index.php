@@ -208,13 +208,14 @@ if (mysqli_query($conn, $sql)) {
 }
 mysqli_close($conn);
 }
+
 // Insert Address Into Database!
   if (isset($_POST["submit2"])) {
 $address = mysqli_real_escape_string($conn, $_POST['street']);
 $zip = mysqli_real_escape_string($conn, $_POST['zipcode']);
 $city = mysqli_real_escape_string($conn, $_POST['city']);
 $country = mysqli_real_escape_string($conn, $_POST['country']);
-$sql = "INSERT INTO address (`Address_ID`, `Street`, `ZIP-Code`, `City`, `Country`) VALUES (NULL, 'Groundstreet', 1234, 'Vienna', 'Austria')";
+$sql = "INSERT INTO address (`Address_ID`, `Street`, `ZIP-Code`, `City`, `Country`) VALUES (NULL, '$address', '$zip', '$city', '$country')";
 if (mysqli_query($conn, $sql)) {
    echo "<h1>New record created.</h1>";
 } else {
