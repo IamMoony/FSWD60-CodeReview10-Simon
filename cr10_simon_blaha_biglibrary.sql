@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2019 at 01:10 AM
+-- Generation Time: Mar 17, 2019 at 01:31 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -93,8 +93,7 @@ INSERT INTO `media` (`Media_ID`, `Name`, `ISBN`, `Image`, `Descr`, `Publish_Date
 (55, 'Trail of Broken Wings', '9781234561423', 'https://images-na.ssl-images-amazon.com/images/I/51QoeMRbsvL.jpg', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', '2005-03-25', 3, 2, 1),
 (56, 'The LEGO® Movie 2: The Second Part Soundtrack', '4563234561756', 'https://images-na.ssl-images-amazon.com/images/I/81mrU6UAqOL._SL1500_.jpg', 'Soundtrack', '2015-03-10', 1, 1, 3),
 (57, 'Settle Here', '9781234561423', 'https://images-na.ssl-images-amazon.com/images/I/61KGtRRcJtL._SL1500_.jpg', 'Album', '2017-08-08', 1, 2, 3),
-(58, '', '1234567123456', 'https://images-na.ssl-images-amazon.com/images/I/91sz46CbwVL._SL1500_.jpg', 'test', '1999-02-12', 3, 1, 2),
-(59, '', '1234567123456', 'https://images-na.ssl-images-amazon.com/images/I/91sz46CbwVL._SL1500_.jpg', 'test', '1999-02-12', 3, 1, 2);
+(63, 'test', '1234561234567', 'https://images-na.ssl-images-amazon.com/images/I/91sz46CbwVL._SL1500_.jpg', 'test', '1999-11-12', 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -241,7 +240,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `Media_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `Media_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `publisher`
