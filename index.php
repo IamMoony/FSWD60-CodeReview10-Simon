@@ -28,77 +28,93 @@
       <form class="form-horizontal" action="" method="POST">
         <div class="form-group">
           <label class="control-label col-sm-2" for="full_name">Book Name</label>
+          <?php 
+          // echo '<input type="" name="id" value="'. $row['bookname'].'">';
+          // echo'<input type="hidden" name="id" id="name" value="'. $row['Media_ID'].'">';
+          ?>
           <div class="col-sm-10">
-            <input type="name" class="form-control" id="firstname" placeholder="Enter Name" name="bookname">
+            <input type="name" class="form-control" id="firstname" placeholder="" name="bookname">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="pwd">ISBN</label>
           <div class="col-sm-10">          
-            <input type="number" class="form-control" placeholder="Enter Last Name" name="ISBN">
+            <input type="number" class="form-control" placeholder="" name="ISBN">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="pwd">Image Link</label>
           <div class="col-sm-10">          
-            <input type="" class="form-control" id="zip-code" placeholder="Enter E-Mail" name="Image">
+            <input type="" class="form-control" id="zip-code" placeholder="" name="Image">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="pwd">Description</label>
           <div class="col-sm-10">          
-            <input type="" class="form-control" placeholder="Enter E-Mail" name="Descr">
+            <input type="" class="form-control" placeholder="" name="Descr">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="pwd">Publish Date</label>
+          <?php 
+          // echo '<input type="" name="id" value="'. $row['publisher'].'">';
+          // echo'<input type="hidden" name="id" id="name" value="'. $row['Media_ID'].'">';
+          ?>
           <div class="col-sm-10">          
-            <input type="" class="form-control" placeholder="Enter E-Mail" name="Publish_Date">
+            <input type="text" class="form-control" name="Publish_Date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+            <p>(Format: (YYYY-MM-DD)</p>
           </div>
         </div>
-          <div class="form-group">
+        <div class="form-group">
           <label class="control-label col-sm-2" for="pwd">Publisher</label>
           <div class="col-sm-10">          
             <select name="publisher">
-              <option value="Penguin Random House">Penguin Random House</option>
-              <option value="Hachette Livre">Hachette Livre</option>
-              <option value="HarperCollins">HarperCollins</option>
-              <option value="Pearson Education">Pearson Education</option>
-              <option value="Bloomsbury">Bloomsbury</option>
+              <option value="1">Pearson</option>
+              <option value="2">Informa</option>
+              <option value="3">Sony Music Entertainment</option>
+              <option value="4">20th Century Fox</option>
+              <option value="5">Warner Bros.</option>
+              <option value="6">EKSMO</option>
+              <option value="7">WEKA</option>
             </select>
           </div>
         </div>
-          <div class="form-group">
+        <div class="form-group">
           <label class="control-label col-sm-2" for="pwd">Type</label>
           <div class="col-sm-10">          
             <select name="type">
-              <option value="Book">Book</option>
-              <option value="CD">CD</option>
-              <option value="DVD">DVD</option>
-              <option value="Vinyl">Vinyl</option>
+              <option value="3">Book</option>
+              <option value="1">CD</option>
+              <option value="2">DVD</option>
+              <option value="4">Vinyl</option>
             </select>
           </div>
         </div>
-          <div class="form-group">
+        <div class="form-group">
           <label class="control-label col-sm-2" for="pwd">Status</label>
           <div class="col-sm-10">          
-              <select name="status">
-              <option value="Available">Available</option>
-              <option value="Not Available">Not Available</option>
+            <select name="status">
+              <option value="1">Available</option>
+              <option value="2">Not Available</option>
             </select>
           </div>
         </div>
+
+        
 
         <div class="form-group">        
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-default" name="submit">Submit</button>
           </div>
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" name="submit3">Update</button>
+          </div>
         </div>
       </form>
     </div>
     <div class="col-lg-3">
-    <h1>Add Address</h1>
-    <form class="form-horizontal" action="" method="POST">
+      <h1>Add Address</h1>
+      <form class="form-horizontal" action="" method="POST">
         <div class="form-group">
           <label class="control-label col-sm-2" for="full_name">Street</label>
           <div class="col-sm-10">
@@ -124,10 +140,10 @@
           </div>
         </div>
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default" name="submit2">Submit</button>
-          </div>
+          <button type="submit" class="btn btn-default" name="submit2">Submit</button>
+        </div>
       </form>
-</div>
+    </div>
 
 
 
@@ -184,59 +200,91 @@
           <td>".$val["Publisher_Name"]."</td>
           <td>".$val["Type"]."</td>
           <td>".$val["Status"]."</td>
-          <td><button>Edit</button></td>
+          <td><a class='btn btn-danger' href='index.php?id=".$val["Media_ID"]."'>Edit</a></td>
           <td><a class='btn btn-danger' href='index.php?id=".$val["Media_ID"]."'>Delete</a></td>
           </tr>";
         }
 // Insert Record Media
         if (isset($_POST["submit"])) {
-$bookname = mysqli_real_escape_string($conn, $_POST['bookname']);
-$ISBN = mysqli_real_escape_string($conn, $_POST['ISBN']);
-$Image = mysqli_real_escape_string($conn, $_POST['Image']);
-$Descr = mysqli_real_escape_string($conn, $_POST['Descr']);
-$Publish_Date = mysqli_real_escape_string($conn, $_POST['Publish_Date']);
-$Type = mysqli_real_escape_string($conn, $_POST['type']);
-$Status = mysqli_real_escape_string($conn, $_POST['status']);
-$Publisher = mysqli_real_escape_string($conn, $_POST['publisher']);
-$sql = "INSERT INTO media (Media_ID, Name, ISBN, Image, Descr, Publish_Date, fk_Type_ID, fk_Status_ID, fk_Publisher_ID) VALUES (NULL,'$Name', '$ISBN', '$Image', '$Descr', '$Publish_Date', '$Type', '$Status', '$Publisher')";
-if (mysqli_query($conn, $sql)) {
-   echo "<h1>New record created.</h1>";
-} else {
-   echo "<h1>Record creation error for: </h1>" . 
-         "<p>" . $sql . "</p>" . 
-         mysqli_error($conn);
-}
-mysqli_close($conn);
-}
+          $bookname = mysqli_real_escape_string($conn, $_POST['bookname']);
+          $ISBN = mysqli_real_escape_string($conn, $_POST['ISBN']);
+          $Image = mysqli_real_escape_string($conn, $_POST['Image']);
+          $Descr = mysqli_real_escape_string($conn, $_POST['Descr']);
+          $Publish_Date = mysqli_real_escape_string($conn, $_POST['Publish_Date']);
+          $Type = mysqli_real_escape_string($conn, $_POST['type']);
+          $Status = mysqli_real_escape_string($conn, $_POST['status']);
+          $Publisher = mysqli_real_escape_string($conn, $_POST['publisher']);
+          $sql = "INSERT INTO media (Media_ID, Name, ISBN, Image, Descr, Publish_Date, fk_Type_ID, fk_Status_ID, fk_Publisher_ID) 
+          VALUES (NULL,'$Name', '$ISBN', '$Image', '$Descr', '$Publish_Date', '$Type', '$Status', '$Publisher')";
+          if (mysqli_query($conn, $sql)) {
+           echo "<h1>New record created.</h1>";
+         } else {
+           echo "<h1>Record creation error for: </h1>" . 
+           "<p>" . $sql . "</p>" . 
+           mysqli_error($conn);
+         }
+         mysqli_close($conn);
+       }
 
 // Insert Address Into Database!
-  if (isset($_POST["submit2"])) {
-$address = mysqli_real_escape_string($conn, $_POST['street']);
-$zip = mysqli_real_escape_string($conn, $_POST['zipcode']);
-$city = mysqli_real_escape_string($conn, $_POST['city']);
-$country = mysqli_real_escape_string($conn, $_POST['country']);
-$sql = "INSERT INTO address (`Address_ID`, `Street`, `ZIP-Code`, `City`, `Country`) VALUES (NULL, '$address', '$zip', '$city', '$country')";
-if (mysqli_query($conn, $sql)) {
-   echo "<h1>New record created.</h1>";
-} else {
-   echo "<h1>Record creation error for: </h1>" . 
+       if (isset($_POST["submit2"])) {
+        $address = mysqli_real_escape_string($conn, $_POST['street']);
+        $zip = mysqli_real_escape_string($conn, $_POST['zipcode']);
+        $city = mysqli_real_escape_string($conn, $_POST['city']);
+        $country = mysqli_real_escape_string($conn, $_POST['country']);
+        $sql = "INSERT INTO address (`Address_ID`, `Street`, `ZIP-Code`, `City`, `Country`) VALUES (NULL, '$address', '$zip', '$city', '$country')";
+        if (mysqli_query($conn, $sql)) {
+         echo "<h1>New record created.</h1>";
+       } else {
+         echo "<h1>Record creation error for: </h1>" . 
          "<p>" . $sql . "</p>" . 
          mysqli_error($conn);
-}
-mysqli_close($conn);
-}
-//Delete Function
-        if(isset($_GET["id"])){
-          $id= $_GET["id"];
-          $sql = "DELETE FROM media WHERE Media_ID = $id";
-          mysqli_query($conn, $sql);
-        }
-        ?>
+       }
+       mysqli_close($conn);
+     }
+// Delete Function
+     if(isset($_GET["id"])){
+      $id= $_GET["id"];
+      $sql = "DELETE FROM media WHERE Media_ID = $id";
+      mysqli_query($conn, $sql);
+    };
 
 
-      </tbody>
-    </table>
-  </div>
+// Edit
+    if(isset($_GET['id'])) {
+     $id = $_GET['id'];
+     $sql = "SELECT * FROM media WHERE Media_ID = $id";
+     $result = mysqli_query($conn, $sql);
+
+     $row = mysqli_fetch_assoc($result);
+     // echo "bookname :" . $row["bookname"];
+   };
+
+   // $connect->close();
+
+
+
+   if (isset($_POST["submit3"])){
+      $id= $_POST["id"];
+      $name = mysqli_real_escape_string($conn, $_POST['newname']);
+      $sql = "UPDATE `media` SET bookname = '$bookname' WHERE Media_ID = $id"; 
+      if (mysqli_query($conn, $sql)) {
+         echo "<h1>record updated.<h1>";
+      } else {
+         echo "<h1>Update error for: </h1>" . 
+               "<p>" . $sql . "</p>" . mysqli_error($conn);
+        } 
+    };
+//Edit End
+   // $connect->close();
+
+   
+
+
+   ?>
+ </tbody>
+</table>
+</div>
 </div>
 
 
