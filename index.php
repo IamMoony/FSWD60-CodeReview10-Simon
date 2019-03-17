@@ -215,7 +215,7 @@
           $Status = mysqli_real_escape_string($conn, $_POST['status']);
           $Publisher = mysqli_real_escape_string($conn, $_POST['publisher']);
           $sql = "INSERT INTO media (Media_ID, Name, ISBN, Image, Descr, Publish_Date, fk_Type_ID, fk_Status_ID, fk_Publisher_ID) 
-          VALUES (NULL,'$Name', '$ISBN', '$Image', '$Descr', '$Publish_Date', '$Type', '$Status', '$Publisher')";
+          VALUES (NULL,'$bookname', '$ISBN', '$Image', '$Descr', '$Publish_Date', '$Type', '$Status', '$Publisher')";
           if (mysqli_query($conn, $sql)) {
            echo "<h1>New record created.</h1>";
          } else {
